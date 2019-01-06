@@ -35,22 +35,20 @@ class MyListState extends State<MyList>
     return new Center(
       child: FutureBuilder<List>(
         future: getJSONData(),
+
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return new ListView.builder(
                 padding: const EdgeInsets.all(16.0),
-                itemCount: snapshot.data == null ? 0 : snapshot.data.length,
+                itemCount: snapshot.data.length,
                 itemBuilder: (context, i) {
                   return new Card(
                     child: new Container(
                       child: new Text(
-                        // Read the name field value and set it in the Text widget
                         snapshot.data[i]['name'],
-                        // set some style to text
                         style: new TextStyle(
                             fontSize: 20.0, color: Colors.lightBlueAccent),
                       ),
-                      // added padding
                       padding: const EdgeInsets.all(15.0),
                     ),
                   );
@@ -58,7 +56,6 @@ class MyListState extends State<MyList>
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          // By default, show a loading spinner
           return CircularProgressIndicator();
         },
       ),

@@ -1,31 +1,23 @@
 import 'package:flutter/material.dart';
 
-class CounterPage extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return new Counter();
-  }
-}
-
 class Counter extends StatefulWidget {
   @override
-  _CounterState createState() => _CounterState();
+  CounterState createState() => CounterState();
 }
 
-class _CounterState extends State<Counter>
+class CounterState extends State<Counter>
     with AutomaticKeepAliveClientMixin<Counter> {
-  int _counter = 0;
+  int counter = 0;
 
   void _increment() {
     setState(() {
-      ++_counter;
+      ++counter;
     });
   }
 
   void _decrement() {
     setState(() {
-      --_counter;
+      --counter;
     });
   }
 
@@ -36,7 +28,7 @@ class _CounterState extends State<Counter>
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         new Row(),
-        new CounterDisplay(count: _counter),
+        new CounterDisplay(count: counter),
         new Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
           child: Row(

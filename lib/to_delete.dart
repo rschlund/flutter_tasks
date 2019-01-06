@@ -9,12 +9,39 @@ class TutorialHome extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return new DefaultTabController(
+      length: 2,
+      child: new Scaffold(
         appBar: new AppBar(
           title: new Text("Examples"),
+          bottom: new TabBar(
+            tabs: <Widget>[
+              new Tab(icon: Icon(Icons.home)),
+              new Tab(icon: Icon(Icons.blur_circular)),
+            ],
+          ),
         ),
-        body: new Counter(),
+        body: new MyTabBarView(),
+      ),
     );
+  }
+}
+
+
+class MyTabBarView extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return new TabBarView(
+      children: <Widget>[
+        new Counter(),
+        new MyList(),
+      ],
+    );
+  }
+}
+
+class MyList extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return new Text("You selected second!");
   }
 }
 
@@ -23,7 +50,7 @@ class Counter extends StatefulWidget {
   CounterState createState() => CounterState();
 }
 
-class CounterState extends State<Counter> {
+class CounterState extends State<Counter> with AutomaticKeepAliveClientMixin<Counter>{
   int counter = 0;
 
   void _increment() {
@@ -58,6 +85,9 @@ class CounterState extends State<Counter> {
       ],
     ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class CounterDisplay extends StatelessWidget {
@@ -75,12 +105,13 @@ class CounterDisplay extends StatelessWidget {
     );
   }
 }
+
 class ChangeCounterButton extends StatelessWidget {
 
   final VoidCallback onPressed;
   final String upDown;
 
-  //Konstruktor mit named Parametern
+  //Konstruktor mit named Parameter
   ChangeCounterButton({this.upDown, this.onPressed});
 
   @override

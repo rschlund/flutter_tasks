@@ -16,8 +16,8 @@ class TutorialHome extends StatelessWidget {
           title: new Text("Examples"),
           bottom: new TabBar(
             tabs: <Widget>[
-              new Tab(text: "Counter"),
-              new Tab(text: "List"),
+              new Tab(icon: new Icon(Icons.home)),
+              new Tab(text: "Liste"),
             ],
           ),
         ),
@@ -46,21 +46,21 @@ class MyList extends StatelessWidget {
 
 class Counter extends StatefulWidget {
   @override
-  _CounterState createState() => _CounterState();
+  CounterState createState() => CounterState();
 }
 
-class _CounterState extends State<Counter> {
-  int _counter = 0;
+class CounterState extends State<Counter> with AutomaticKeepAliveClientMixin<Counter>{
+  int counter = 0;
 
   void _increment() {
     setState(() {
-      ++_counter;
+      ++counter;
     });
   }
 
   void _decrement() {
     setState(() {
-      --_counter;
+      --counter;
     });
   }
 
@@ -71,7 +71,7 @@ class _CounterState extends State<Counter> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         new Row(),
-        new CounterDisplay(count: _counter),
+        new CounterDisplay(count: counter),
         new Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
           child: Row(
@@ -84,6 +84,9 @@ class _CounterState extends State<Counter> {
       ],
     ));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class CounterDisplay extends StatelessWidget {
