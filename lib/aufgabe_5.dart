@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'counterPage.dart';
+import 'counterPage5.dart';
 import 'myListPage.dart';
 
 void main() {
@@ -7,21 +7,24 @@ void main() {
     // Title
     title: "Using Tabs",
     // Home
-    home: new TutorialHome(),
+    home: new TutorialHome( ),
   ));
 }
 
 class TutorialHome extends StatefulWidget {
+
   TutorialHome({Key key}) : super(key: key);
 
   @override
   TutorialHomeState createState() => TutorialHomeState();
 }
 
-class TutorialHomeState extends State<TutorialHome> {
+class TutorialHomeState extends State<TutorialHome>{
   int _selectedIndex = 0;
-  final List<Widget> _children = [
-    new Counter(),
+  static int count = 0;
+
+  final List _children = [
+    new Counter(TutorialHomeState.count),
     new MyList(),
   ];
 
@@ -48,6 +51,9 @@ class TutorialHomeState extends State<TutorialHome> {
 
   void _onItemTapped(int index) {
     setState(() {
+      if(_selectedIndex == 0){
+        TutorialHomeState.count = _children[0].count;
+      }
       _selectedIndex = index;
     });
   }

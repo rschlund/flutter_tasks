@@ -51,9 +51,11 @@ class _CounterState extends State<Counter> {
 }
 
 class CounterDisplay extends StatelessWidget {
-  CounterDisplay({this.counter});
 
   final int counter;
+
+  CounterDisplay({this.counter});
+
 
   @override
   Widget build(BuildContext context) {

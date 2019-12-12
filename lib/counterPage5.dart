@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
+
+  int count = 0;
+  Counter(this.count);
+
   @override
-  CounterState createState() => CounterState();
+  CounterState createState() => CounterState(count);
 }
 
 class CounterState extends State<Counter>
     with AutomaticKeepAliveClientMixin<Counter> {
   int _counter = 0;
 
+  CounterState(this._counter);
+
   void _increment() {
     setState(() {
       ++_counter;
+      widget.count = _counter;
     });
   }
 
   void _decrement() {
     setState(() {
       --_counter;
+      widget.count = _counter;
     });
   }
 

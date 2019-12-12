@@ -63,8 +63,7 @@ class CounterState extends State<Counter> {
 class CounterDisplay extends StatelessWidget {
 
   final int count;
-
-  //Konstruktor mit named Parameter
+  
   CounterDisplay({this.count});
 
   @override
