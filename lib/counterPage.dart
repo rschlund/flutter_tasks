@@ -24,22 +24,23 @@ class CounterState extends State<Counter>
   @override
   Widget build(BuildContext context) {
     return new Center(
-        child: new Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        new Row(),
-        new CounterDisplay(count: _counter),
-        new Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                new ChangeCounterButton(upDown: "--", onPressed: _decrement),
-                new ChangeCounterButton(upDown: "++", onPressed: _increment),
-              ]),
-        ),
-      ],
-    ));
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Row(),
+          new CounterDisplay(count: _counter),
+          new Padding(
+            padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  new ChangeCounterButton(upDown: "--", onPressed: _decrement),
+                  new ChangeCounterButton(upDown: "++", onPressed: _increment),
+                ]),
+          ),
+        ],
+      ),
+    );
   }
 
   @override

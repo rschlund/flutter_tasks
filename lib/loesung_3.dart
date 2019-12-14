@@ -63,22 +63,23 @@ class _CounterState extends State<Counter>
   @override
   Widget build(BuildContext context) {
     return new Center(
-        child: new Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        new Row(),
-        new CounterDisplay(count: _counter),
-        new Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                new ChangeCounterButton(upDown: "--", onPressed: _decrement),
-                new ChangeCounterButton(upDown: "++", onPressed: _increment),
-              ]),
-        ),
-      ],
-    ));
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Row(),
+          new CounterDisplay(count: _counter),
+          new Padding(
+            padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  new ChangeCounterButton(upDown: "--", onPressed: _decrement),
+                  new ChangeCounterButton(upDown: "++", onPressed: _increment),
+                ]),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -86,7 +87,6 @@ class _CounterState extends State<Counter>
 }
 
 class CounterDisplay extends StatelessWidget {
-
   final int count;
 
   //Konstruktor mit named Parameter
@@ -102,7 +102,6 @@ class CounterDisplay extends StatelessWidget {
 }
 
 class ChangeCounterButton extends StatelessWidget {
-
   final VoidCallback onPressed;
   final String upDown;
 
@@ -119,13 +118,13 @@ class ChangeCounterButton extends StatelessWidget {
   }
 }
 
-
-class MyList extends StatefulWidget{
+class MyList extends StatefulWidget {
   @override
-  MyListState createState()=>new MyListState();
+  MyListState createState() => new MyListState();
 }
 
-class MyListState extends State<MyList> with AutomaticKeepAliveClientMixin<MyList>{
+class MyListState extends State<MyList>
+    with AutomaticKeepAliveClientMixin<MyList> {
   final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
@@ -133,7 +132,8 @@ class MyListState extends State<MyList> with AutomaticKeepAliveClientMixin<MyLis
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemBuilder: (context, i) { //i ist die Anzahl der Listenelemente
+        itemBuilder: (context, i) {
+          //i ist die Anzahl der Listenelemente
           if (i.isOdd) return Divider();
           //Nur jedes zweite Element ist ein Wortpaar => index = i/2
           final index = i ~/ 2;

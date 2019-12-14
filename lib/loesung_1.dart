@@ -10,10 +10,10 @@ class TutorialHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Examples"),
-        ),
-        body: new Counter(),
+      appBar: new AppBar(
+        title: new Text("Examples"),
+      ),
+      body: new Counter(),
     );
   }
 }
@@ -41,41 +41,41 @@ class CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     return new Center(
-        child: new Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        new Row(),
-        new CounterDisplay(count: counter),
-        new Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                new ChangeCounterButton(upDown: "--", onPressed: _decrement),
-                new ChangeCounterButton(upDown: "++", onPressed: _increment),
-              ]),
-        ),
-      ],
-    ));
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Row(),
+          new CounterDisplay(counter: counter),
+          new Padding(
+            padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  new ChangeCounterButton(upDown: "--", onPressed: _decrement),
+                  new ChangeCounterButton(upDown: "++", onPressed: _increment),
+                ]),
+          ),
+        ],
+      ),
+    );
   }
 }
 
 class CounterDisplay extends StatelessWidget {
+  final int counter;
 
-  final int count;
-  
-  CounterDisplay({this.count});
+  CounterDisplay({this.counter});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Counter: $count',
+      'Counter: $counter',
       style: TextStyle(fontSize: 25.0),
     );
   }
 }
-class ChangeCounterButton extends StatelessWidget {
 
+class ChangeCounterButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String upDown;
 

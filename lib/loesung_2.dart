@@ -49,7 +49,8 @@ class Counter extends StatefulWidget {
   CounterState createState() => CounterState();
 }
 
-class CounterState extends State<Counter> with AutomaticKeepAliveClientMixin<Counter>{
+class CounterState extends State<Counter>
+    with AutomaticKeepAliveClientMixin<Counter> {
   int counter = 0;
 
   void _increment() {
@@ -67,22 +68,23 @@ class CounterState extends State<Counter> with AutomaticKeepAliveClientMixin<Cou
   @override
   Widget build(BuildContext context) {
     return new Center(
-        child: new Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        new Row(),
-        new CounterDisplay(count: counter),
-        new Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                new ChangeCounterButton(upDown: "--", onPressed: _decrement),
-                new ChangeCounterButton(upDown: "++", onPressed: _increment),
-              ]),
-        ),
-      ],
-    ));
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Row(),
+          new CounterDisplay(count: counter),
+          new Padding(
+            padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 30.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  new ChangeCounterButton(upDown: "--", onPressed: _decrement),
+                  new ChangeCounterButton(upDown: "++", onPressed: _increment),
+                ]),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
