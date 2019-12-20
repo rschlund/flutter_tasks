@@ -9,35 +9,39 @@ class TutorialHome extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return new DefaultTabController(
+    return new DefaultTabController( //Controller für die TabBar, legt die Anzahl der Tabs fest
       length: 2,
       child: new Scaffold(
         appBar: new AppBar(
           title: new Text("Examples"),
           bottom: new TabBar(
             tabs: <Widget>[
+              // Die anzuzeigenden Tabs
               new Tab(icon: new Icon(Icons.home)),
               new Tab(text: "Liste"),
             ],
           ),
         ),
-        body: new MyTabBar(),
+        // Die anzuzeigenden Tabseiten
+        body: new MyTabBarView(),
       ),
     );
   }
 }
 
-class MyTabBar extends StatelessWidget {
+// Widget um die beiden Tabseiten anzuzeigen
+class MyTabBarView extends StatelessWidget {
   Widget build(BuildContext context) {
-    return new TabBarView(
+    return new TabBarView( // Widget zur Abzeige der Tabseiten
       children: <Widget>[
-        new Counter(),
-        new MyList(),
+        new Counter(), // Zählerseite
+        new MyList(), // Listenseite
       ],
     );
   }
 }
 
+// Im Moment ist die Listenseite nur ein kurzer Text
 class MyList extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Text("You selected second!");
@@ -50,7 +54,7 @@ class Counter extends StatefulWidget {
 }
 
 class CounterState extends State<Counter>
-    with AutomaticKeepAliveClientMixin<Counter> {
+    with AutomaticKeepAliveClientMixin<Counter> { // Das Mixin persistiert den Zählerstand => wantKeepAlive auf true
   int counter = 0;
 
   void _increment() {
@@ -88,7 +92,7 @@ class CounterState extends State<Counter>
   }
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => true; // Muss auf true gesetzt werde, damit der Zähler persistent ist
 }
 
 class CounterDisplay extends StatelessWidget {

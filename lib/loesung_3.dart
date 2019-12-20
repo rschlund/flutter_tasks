@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'package:english_words/english_words.dart'; // Import um zufällige Wortpaare darzustellen
 
 void main() => runApp(MaterialApp(
       title: 'Flutter Tutorial',
@@ -125,32 +125,28 @@ class MyList extends StatefulWidget {
 
 class MyListState extends State<MyList>
     with AutomaticKeepAliveClientMixin<MyList> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final _suggestions = <WordPair>[]; // Der Speicher für die aktuell benutzten Wortpaare
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemBuilder: (context, i) {
-          //i ist die Anzahl der Listenelemente
-          if (i.isOdd) return Divider();
-          //Nur jedes zweite Element ist ein Wortpaar => index = i/2
+        itemBuilder: (context, i) { // i ist die Anzahl der aktuellen potentiell unbegrenzten Listenelemente
+          if (i.isOdd) return Divider();// Nur jedes zweite Element ist ein Wortpaar => index = i/2
           final index = i ~/ 2;
-          // Neue Elemente erzeugen, wenn das Ende der Liste erreicht ist
-          if (index >= _suggestions.length) {
-            // ...then generate 10 more and add them to the suggestions list.
-            _suggestions.addAll(generateWordPairs().take(10));
+          if (index >= _suggestions.length) { // Neue Elemente erzeugen, wenn das Ende der Liste auf der Seite erreicht ist
+            _suggestions.addAll(generateWordPairs().take(10)); // Füge 10 neue Wortpaare hinzu
           }
           return _buildRow(_suggestions[index]);
         });
   }
 
+  // Anzeige der Wortpaare in Listenkacheln
   Widget _buildRow(WordPair pair) {
-    return ListTile(
+    return ListTile( // Anzeige des Listenelementes als Kachel
       title: Text(
         pair.asPascalCase,
-        style: _biggerFont,
+        style: const TextStyle(fontSize: 18.0),
       ),
     );
   }
